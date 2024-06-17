@@ -1,0 +1,9 @@
+version: "1.0.0"
+services:
+  server:
+    build: .
+    env_file:
+      - .env
+    container_name: expresstemplate-microservice
+    ports:
+      - "8000:8000"
