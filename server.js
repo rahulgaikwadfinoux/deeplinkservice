@@ -6,6 +6,8 @@ import serveIndex from 'serve-index';
 // import path from 'path';
 // import { dirname } from 'path';
 import path from 'path';
+// import * as xy from 'express';
+
 
 const app = express();
 app.use(cors());
@@ -14,8 +16,16 @@ const PORT = 5000;
 
 const pathWell = path.join('.well-known');
 
-// app.use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
-app.use('/.well-known', express.static(path.join('.well-known')));
+const middleware = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
+
+// app.use(middleware).use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
+app.use(middleware).use('/.well-known', express.static(path.join('.well-known')));
+
+
+// app.use(middleware,)
 
 const sever = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
