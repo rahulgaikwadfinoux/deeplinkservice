@@ -13,19 +13,15 @@
     ],
     "routes": [
         {
+            "handle": "filesystem"
+        },
+        {
             "src": "/(.*)",
             "dest": "server.js"
         },
         {
-            "handle": "filesystem"
-        },
-        {
-            "src": "/\\.well-known/assetlinks.json",
-            "dest": "/\\.well-known/assetlinks.json"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/\\.well-known/assetlinks.json"
+            "src": "/\\.well-known/(.*)",
+            "dest": "/\\.well-known/$1"
         }
     ]
 }
