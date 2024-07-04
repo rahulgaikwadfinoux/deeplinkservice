@@ -20,12 +20,12 @@
             "handle": "filesystem"
         },
         {
-            "src": "/\\.well-known/assetlink.json",
-            "dest": "/.well-known/assetlink.json"
+            "src": "/\\.well-known/assetlinks.json",
+            "dest": "/\\.well-known/assetlinks.json"
         },
         {
             "src": "/(.*)",
-            "dest": "/\\.well-known/assetlink.json"
+            "dest": "/\\.well-known/assetlinks.json"
         }
     ]
 }

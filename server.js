@@ -16,13 +16,13 @@ const PORT = 5000;
 
 const pathWell = path.join('.well-known');
 
-const middleware = function (req, res, next) {
-  console.log('LOGGED')
-  next()
-}
+// const middleware = function (req, res, next) {
+//   // console.log('LOGGED')
+//   next()
+// }
 
 // app.use(middleware).use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
-app.use(middleware).use('/.well-known', express.static(path.join('.well-known')));
+app.use('/.well-known', express.static(path.join('.well-known')));
 
 
 // app.use(middleware,)
