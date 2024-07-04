@@ -2,23 +2,25 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import cors from 'cors';
-
+import serveIndex from 'serve-index';
 
 const app = express();
 app.use(cors());
 
-const PORT =  5000;
+const PORT = 5000;
 
+app.use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
 
 const sever = app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+  console.log(`Server is running on port ${PORT}`);
+});
 
 app.use(express.json());
 
-app.get('/', (req ,res )=>{
-res.send("hiii");
-}); 
+
+app.get('/', (req, res) => {
+  res.send("hiii");
+});
 
 const WEBSITE_URL = 'https://finouxuat.alramz.ae/';
 const ANDROID_APP_URL = 'https://play.google.com/store/apps/details?id=com.alramz.alramz&hl=en';
@@ -58,6 +60,6 @@ app.get('/universal-link', (req, res) => {
 });
 
 process.on('unhandlededRejection', (error, data) => {
-    server.close(() => process.exit(1));
+  server.close(() => process.exit(1));
 });
 
