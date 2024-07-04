@@ -21,12 +21,12 @@ const pathWell = path.join('.well-known');
 //   next()
 // }
 
-app.use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
+// app.use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
 // app.use('/.well-known', express.static(path.join('.well-known')));
 
 
 // app.use(middleware,)
-
+0
 const sever = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
@@ -38,6 +38,26 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send("hiii");
 });
+
+app.get('/.well-known/assetlinks.json', (req, res) => {
+  res.send(
+    [
+      {
+        "relation": [
+          "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+          "namespace": "android_app",
+          "package_name": "com.example.deeplinktest",
+          "sha256_cert_fingerprints": [
+            "57:E4:D7:71:38:74:41:B8:07:44:61:A7:C1:75:E7:15:85:2B:85:CA:29:39:4A:D3:CB:0C:E7:44:7F:51:78:A9"
+          ]
+        }
+      }
+    ]
+  );
+});
+
 
 const WEBSITE_URL = 'https://finouxuat.alramz.ae/';
 const ANDROID_APP_URL = 'https://play.google.com/store/apps/details?id=com.alramz.alramz&hl=en';
