@@ -82,10 +82,15 @@ app.get('/universal-link', (req, res) => {
   const isAndroid = /android/i.test(userAgent);
   const isIOS = /iphone|ipad|ipod/i.test(userAgent);
 
+  res.redirect(WEBSITE_URL);
+
+
   if (isAndroid) {
     // Android: Try to open the app, fall back to Play Store if not installed
-    const androidDeepLink = generateDeepLink('android');
-    res.redirect(androidDeepLink);
+    // const androidDeepLink = generateDeepLink('android');
+    // res.redirect(androidDeepLink);
+    res.redirect(WEBSITE_URL);
+
   } else if (isIOS) {
     // iOS: Try to open the app, fall back to App Store if not installed
     const iosDeepLink = generateDeepLink('ios');
