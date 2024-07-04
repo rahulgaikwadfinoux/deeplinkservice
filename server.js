@@ -21,8 +21,8 @@ const pathWell = path.join('.well-known');
 //   next()
 // }
 
-// app.use(middleware).use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
-app.use('/.well-known', express.static(path.join('.well-known')));
+app.use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
+// app.use('/.well-known', express.static(path.join('.well-known')));
 
 
 // app.use(middleware,)
