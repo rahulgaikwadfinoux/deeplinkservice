@@ -44,7 +44,7 @@ app.get('/.well-known/assetlinks.json', (req, res) => {
     [{
       "relation": ["delegate_permission/common.handle_all_urls"],
       "target": {
-        "namespace": "android_app", "package_name": "com.alramz.alramz  ",
+        "namespace": "android_app", "package_name": "com.alramz.alramz",
         "sha256_cert_fingerprints": ["FC:9E:EA:FE:41:2C:68:C8:76:13:26:2C:86:05:A0:BE:1E:26:03:83:30:97:B5:5F:FF:FC:01:98:CB:73:5B:59"]
       }
     }]
