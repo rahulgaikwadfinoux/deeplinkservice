@@ -3,13 +3,19 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import serveIndex from 'serve-index';
+// import path from 'path';
+// import { dirname } from 'path';
+import path from 'path';
 
 const app = express();
 app.use(cors());
 
 const PORT = 5000;
 
-app.use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
+// const pathWell = path.join('.well-known');
+
+// app.use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
+app.use('/.well-known', express.static(path.join('.well-known')));
 
 const sever = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
