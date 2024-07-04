@@ -15,6 +15,10 @@
         {
             "src": "/(.*)",
             "dest": "server.js"
+        },
+        {
+            "src": "/\\.well-known/(.*)",
+            "dest": "/.well-known/$1"
         }
     ],
     "rewrites": [
