@@ -90,7 +90,7 @@ app.get('/universal-link', (req, res) => {
   const isAndroid = /android/i.test(userAgent);
   const isIOS = /iphone|ipad|ipod/i.test(userAgent);
 
-  res.redirect(WEBSITE_URL);
+  // res.redirect(WEBSITE_URL);
 
 
   if (isAndroid) {
