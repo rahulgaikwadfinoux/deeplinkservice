@@ -24,7 +24,7 @@
             "dest": "/.well-known/assetlink.json"
         },
         {
-            "src": "/\\.well-known/assetlink.json",
+            "src": "/(.*)",
             "dest": "/\\.well-known/assetlink.json"
         }
     ],
