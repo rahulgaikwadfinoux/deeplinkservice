@@ -17,6 +17,9 @@
             "dest": "server.js"
         },
         {
+            "handle": "filesystem"
+        },
+        {
             "src": "/\\.well-known/(.*)",
             "dest": "/.well-known/$1"
         }
