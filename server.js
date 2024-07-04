@@ -67,7 +67,7 @@ app.get('/.well-known/assetlinks.json', (req, res) => {
 
 
 
-const WEBSITE_URL = 'https://finouxuat.alramz.ae/';
+const WEBSITE_URL = 'https://webtrade.alramz.ae/';
 const ANDROID_APP_URL = 'https://play.google.com/store/apps/details?id=com.alramz.alramz&hl=en';
 const IOS_APP_URL = 'https://apps.apple.com/in/app/al-ramz-trade-invest/id6448725085';
 const ANDROID_PACKAGE_NAME = 'com.alramz.alramz';
