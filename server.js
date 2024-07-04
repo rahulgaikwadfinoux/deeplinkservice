@@ -41,22 +41,30 @@ app.get('/', (req, res) => {
 
 app.get('/.well-known/assetlinks.json', (req, res) => {
   res.send(
-    [
-      {
-        "relation": [
-          "delegate_permission/common.handle_all_urls"
-        ],
-        "target": {
-          "namespace": "android_app",
-          "package_name": "com.example.deeplinktest",
-          "sha256_cert_fingerprints": [
-            "57:E4:D7:71:38:74:41:B8:07:44:61:A7:C1:75:E7:15:85:2B:85:CA:29:39:4A:D3:CB:0C:E7:44:7F:51:78:A9"
-          ]
-        }
+    [{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app", "package_name": "com.alramz.alramz  ",
+        "sha256_cert_fingerprints": ["FC:9E:EA:FE:41:2C:68:C8:76:13:26:2C:86:05:A0:BE:1E:26:03:83:30:97:B5:5F:FF:FC:01:98:CB:73:5B:59"]
       }
-    ]
+    }]
   );
 });
+// [
+//   {
+//     "relation": [
+//       "delegate_permission/common.handle_all_urls"
+//     ],
+//     "target": {
+//       "namespace": "android_app",
+//       "package_name": "com.example.deeplinktest",
+//       "sha256_cert_fingerprints": [
+//         "57:E4:D7:71:38:74:41:B8:07:44:61:A7:C1:75:E7:15:85:2B:85:CA:29:39:4A:D3:CB:0C:E7:44:7F:51:78:A9"
+//       ]
+//     }
+//   }
+// ]
+
 
 
 const WEBSITE_URL = 'https://finouxuat.alramz.ae/';
