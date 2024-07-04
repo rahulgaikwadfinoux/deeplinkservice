@@ -27,11 +27,5 @@
             "src": "/(.*)",
             "dest": "/\\.well-known/assetlink.json"
         }
-    ],
-    "rewrites": [
-        {
-            "source": "/.well-known/(.*)",
-            "destination": "/.well-known/$1"
-        }
     ]
 }
