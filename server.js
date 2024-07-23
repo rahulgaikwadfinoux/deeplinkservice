@@ -2,11 +2,11 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import cors from 'cors';
-import serveIndex from 'serve-index';
-// import path from 'path';
-// import { dirname } from 'path';
+
 import path from 'path';
-// import * as xy from 'express';
+import bodyParser from 'body-parser';
+import { createTransport } from 'nodemailer';
+import { connect } from 'imap-simple';
 
 
 const app = express();
@@ -16,17 +16,74 @@ const PORT = 5000;
 
 const pathWell = path.join('.well-known');
 
-// const middleware = function (req, res, next) {
-//   // console.log('LOGGED')
-//   next()
-// }
+app.use(bodyParser.json());
 
-// app.use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
-// app.use('/.well-known', express.static(path.join('.well-known')));
+const config = {
+  imap: {
+    user: '66e4be22176c55',
+    password: '7b1f1aad78ed39',
+    host: 'sandbox.smtp.mailtrap.io', // e.g., 'imap.gmail.com' for Gmail
+    port: 465,
+    tls: true,
+    authTimeout: 3000,
+  }
+};
 
+app.get('/sendmail', async (req, res) => {
+  // const connection = await imaps.connect({ imap: config.imap });
+  const transporter = createTransport({
+    host: "sandbox.smtp.mailtrap.io",
+    port: 2525,
+    auth: {
+      user: "66e4be22176c55",
+      pass: "7b1f1aad78ed39"
+    }
+  });
 
-// app.use(middleware,)
-0
+  const mailOptions = {
+    from: 'your-email@example.com', // sender address
+    to: "rahulkishorgaikwad@gmail.com", // list of receivers
+    subject: "subject", // Subject line
+    text: "0123456", // plain text body
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).send('Email sent successfully');
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).send('Error sending email');
+  }
+
+})
+app.get('/getotp', async (req, res) => {
+  try {
+    const connection = await connect({ imap: config.imap });
+    await connection.openBox('Inbox');
+
+    const searchCriteria = [];
+    const fetchOptions = { bodies: ['HEADER', 'TEXT'], markSeen: true };
+    const results = await connection.search(searchCriteria, fetchOptions);
+    const messages = results.map(res => res.parts.filter(part => part.which === 'TEXT')[0].body);
+
+    const otp = extractOTP(messages);
+    res.json({ otp });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+function extractOTP(messages) {
+  const otpRegex = /\b\d{6}\b/; // Assuming OTP is a 6-digit number
+  for (let message of messages) {
+    const match = message.match(otpRegex);
+    if (match) {
+      return match[0];
+    }
+  }
+  return null;
+}
+
 const sever = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
