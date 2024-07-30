@@ -99,20 +99,35 @@ app.get('/', (req, res) => {
 app.get('/.well-known/assetlinks.json', (req, res) => {
   res.send(
     [
-  {
-    relation: ["delegate_permission/common.handle_all_urls"],
+      {
+        relation: ["delegate_permission/common.handle_all_urls"],
 
-    target: {
-      namespace: "android_app",
-      package_name: "com.alramz.alramz.uat",
-      sha256_cert_fingerprints: [
-        "81:12:FB:5A:64:E0:D7:EF:26:C3:73:C5:64:C4:4F:85:AB:96:D1:F8:D8:64:DB:6B:74:0C:40:1A:3C:B4:C0:45",
-      ],
-    },
-  },
-]
+        target: {
+          namespace: "android_app",
+          package_name: "com.alramz.alramz.uat",
+          sha256_cert_fingerprints: [
+            "81:12:FB:5A:64:E0:D7:EF:26:C3:73:C5:64:C4:4F:85:AB:96:D1:F8:D8:64:DB:6B:74:0C:40:1A:3C:B4:C0:45",
+          ],
+        },
+      },
+    ]
   );
 });
+
+app.get('/.well-known/apple-app-site-association', (req, res) => {
+  res.send({
+    "applinks": {
+      "apps": [],
+      "details": [
+        {
+          "appID": "SRY6EG2SX6.com.alramz.alramz.uat",
+          "paths": ["*"]
+        }
+      ]
+    }
+  });
+});
+
 
 // [{
 //   "relation": ["delegate_permission/common.handle_all_urls"],
