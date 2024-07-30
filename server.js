@@ -101,12 +101,11 @@ app.get('/.well-known/assetlinks.json', (req, res) => {
     [
       {
         relation: ["delegate_permission/common.handle_all_urls"],
-
         target: {
           namespace: "android_app",
           package_name: "com.alramz.alramz.uat",
           sha256_cert_fingerprints: [
-            "81:12:FB:5A:64:E0:D7:EF:26:C3:73:C5:64:C4:4F:85:AB:96:D1:F8:D8:64:DB:6B:74:0C:40:1A:3C:B4:C0:45",
+            "81:12:FB:5A:64:E0:D7:EF:26:C3:73:C5:64:C4:4F:85:AB:96:D1:F8:D8:64:DB:6B:74:0C:40:1A:3C:B4:C0:45"
           ],
         },
       },
